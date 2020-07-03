@@ -1,0 +1,14 @@
+{
+  "name": "typing-timer",
+  "version": "1.0.0",
+  "description": "Capture your keyboard events as they happen.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jay Harris",
+  "license": "ISC",
+  "devDependencies": {
+    "es-dev-server": "^1.56.0"
+  }
+}
