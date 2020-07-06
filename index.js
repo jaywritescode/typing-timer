@@ -15,7 +15,7 @@
     replayButton.addEventListener('click', () => {
       fetch('_test.json')
       .then(res => res.json())
-      .then(doReplay)
+      .then((json) => doReplay(json, replayArea))
       .catch(function (err) {
         var p = document.createElement('p');
         p.appendChild(
@@ -27,28 +27,30 @@
   });
 })();
 
-function doReplay(events) {
+function doReplay(events, el) {
   if (!events.length) {
     return;
   }
 
-  applyKeyboardEvent(events[0]);
-  if (events.length > 1) {
-    setTimeout(() => doReplay(events.slice(1)), events[1].timeStamp - events[0].timeStamp);
+  function appendText(data) {
+    el.textContent += data;
   }
-}
 
-function applyKeyboardEvent({ data, inputType }) {
-    if (inputType == 'insertText') {
-      appendText(data);
+  const actions = {
+    insertText: appendText
+  };
+
+  function applyKeyboardEvent({ data, inputType }) {
+    const fn = actions[inputType] || (() => {});
+    fn(data);
+  }
+
+  (function replay(events) {
+    applyKeyboardEvent(events[0]);
+    if (events.length > 1) {
+      setTimeout(() => replay(events.slice(1)), events[1].timeStamp - events[0].timeStamp);
     }
-}
-
-function appendText(text) {
-  console.group('appendText: "%s"', text);
-  const replayArea = document.getElementById('show-replay');
-  replayArea.textContent += text;
-  console.groupEnd();
+  })(events);
 }
 
 class EventHistory {
