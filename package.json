@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "es-dev-server": "^1.56.0"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.15"
   }
 }

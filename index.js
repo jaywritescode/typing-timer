@@ -1,3 +1,5 @@
+import { partialRight, noop } from 'lodash-es';
+
 (() => {
   const typingArea = document.getElementById('capture-area');
   const codeArea = document.getElementById('result').firstElementChild;
@@ -15,7 +17,7 @@
     replayButton.addEventListener('click', () => {
       fetch('_test.json')
       .then(res => res.json())
-      .then((json) => doReplay(json, replayArea))
+      .then(partialRight(doReplay, replayArea))
       .catch(function (err) {
         var p = document.createElement('p');
         p.appendChild(
@@ -41,7 +43,7 @@ function doReplay(events, el) {
   };
 
   function applyKeyboardEvent({ data, inputType }) {
-    const fn = actions[inputType] || (() => {});
+    const fn = actions[inputType] || noop;
     fn(data);
   }
 
