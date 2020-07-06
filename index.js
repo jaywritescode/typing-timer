@@ -15,7 +15,7 @@ import { partialRight, noop } from 'lodash-es';
     });
 
     replayButton.addEventListener('click', () => {
-      fetch('_test.json')
+      fetch('_test2.json')
       .then(res => res.json())
       .then(partialRight(doReplay, replayArea))
       .catch(function (err) {
@@ -38,8 +38,13 @@ function doReplay(events, el) {
     el.textContent += data;
   }
 
+  function chopText() {
+    el.textContent = el.textContent.slice(0, -1);
+  }
+
   const actions = {
-    insertText: appendText
+    insertText: appendText,
+    deleteContentBackward: chopText,
   };
 
   function applyKeyboardEvent({ data, inputType }) {
