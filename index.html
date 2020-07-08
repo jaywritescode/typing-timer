@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.7.0/modern-normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/awsm.css/dist/awsm.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script type="module" src="index.js"></script>
   </head>
   <body>
-    <div id="content">
-      <textarea id="capture-area"></textarea>
-      <div id="result">
-        <code></code>
-      </div>
+    <header>click-clack</header>
+    <main id="content">
+      <section>
+        <label for="capture-area">Type here...</label>
+        <textarea id="capture-area"></textarea>
+      </section>
+      <section>
+        <label for="result">Events</label>
+        <output id="result" for="capture-area">
+          <code></code>
+        </output>
+      </section>
       <div id="replay">
         <button id="start-replay">Start</button>
         <div id="show-replay"></div>
       </div>
-    </div>
+    </main>
   </body>
 </html>

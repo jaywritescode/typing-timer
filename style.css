@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'TypeWrong';
+  src: url('fonts/typwrng.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+
+body header {
+  font-family: TypeWrong;
+}
+
+main section:nth-child(1) {
+  border: 1px solid blue;
+}
+
+main section:nth-child(2) {
+  border: 1px solid red;
+}
