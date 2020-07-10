@@ -5,30 +5,71 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.7.0/modern-normalize.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/awsm.css/dist/awsm.min.css"
-    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/codemirror.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/mode/javascript/javascript.js"></script>
+    <style>
+      :root {
+        --background-body: #E0DDCF;
+        --background: #F1F0EA;
+        --background-alt: #534B52;
+        --text-main: #2D232E;
+        --text-muted: #474448;
+        --text-bright: #E0DDCF;
+      }
+    </style>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="index.js"></script>
   </head>
   <body>
-    <header>click-clack</header>
-    <main id="content">
-      <section>
-        <label for="capture-area">Type here...</label>
-        <textarea id="capture-area"></textarea>
-      </section>
-      <section>
-        <label for="result">Events</label>
-        <output id="result" for="capture-area">
-          <code></code>
-        </output>
-      </section>
-      <div id="replay">
-        <button id="start-replay">Start</button>
-        <div id="show-replay"></div>
+    <header>
+      <div class="container">
+        <h1 class="text-align-left">
+          click-clack
+        </h1>
+        <h3 class="text-align-right">
+          a website typewriter
+        </h3>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <section>
+          <label for="capture-area">Type here...</label>
+          <textarea id="capture-area"></textarea>
+          <div id="json-schema">
+            <h3>JSON schema</h3>
+            <!-- <code>
+              {
+                "$schema": "http://json-schema.org/schema#",
+                "$id": "http://jaywritesco.de/schemas/myschema.json",
+                "title": "some type of schema",
+                "type": "array",
+                "properties": {
+                  "items": {
+  
+                  }
+                }
+              }
+            </code> -->
+          </div>
+          <div id="replay">
+            <button id="start-replay">Start</button>
+            <div id="show-replay"></div>
+          </div>
+        </section>
+        <section>
+          <label for="result">Events</label>
+          <textarea id="result"></textarea>
+        </section>  
       </div>
     </main>
+    <script>
+      CodeMirror.fromTextArea(document.getElementById('result'), {
+        mode: 'json',
+        readOnly: true,
+        lineNumbers: true,
+      });
+    </script>
   </body>
 </html>
