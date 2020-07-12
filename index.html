@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.7.0/modern-normalize.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.7.0/modern-normalize.min.css" />
+    
+    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/codemirror.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/codemirror.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.55.0/mode/javascript/javascript.js"></script>
+    
     <style>
       :root {
         --background-body: #E0DDCF;
@@ -65,11 +65,16 @@
       </div>
     </main>
     <script>
-      CodeMirror.fromTextArea(document.getElementById('result'), {
+      const codeArea = CodeMirror.fromTextArea(document.getElementById('result'), {
         mode: 'json',
         readOnly: true,
         lineNumbers: true,
+        lineWrapping: true,
       });
+
+      function updateResult(text) {
+        codeArea.setValue(text);
+      }
     </script>
   </body>
 </html>

@@ -2,7 +2,7 @@ import { partialRight, noop } from 'lodash-es';
 
 (() => {
   const typingArea = document.getElementById('capture-area');
-  const codeArea = document.getElementById('result').firstElementChild;
+  // const codeArea = document.getElementById('result').firstElementChild;
   const replayButton = document.getElementById('start-replay');
   const replayArea = document.getElementById('show-replay');
 
@@ -11,7 +11,7 @@ import { partialRight, noop } from 'lodash-es';
 
     typingArea.addEventListener('input', (evt) => {
       const events = history.recordEvent(evt);
-      codeArea.innerText = JSON.stringify(events);
+      updateResult(JSON.stringify(events));
     });
 
     replayButton.addEventListener('click', () => {
