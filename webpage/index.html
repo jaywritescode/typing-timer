@@ -19,7 +19,7 @@
       }
     </style>
     <link rel="stylesheet" href="style.css" />
-    <script type="module" src="index.js"></script>
+    <script type="module" src="../index.js"></script>
   </head>
   <body>
     <header>
@@ -53,14 +53,18 @@
               }
             </code> -->
           </div>
-          <div id="replay">
-            <button id="start-replay">Start</button>
-            <div id="show-replay"></div>
-          </div>
         </section>
         <section>
           <label for="result">Events</label>
           <textarea id="result"></textarea>
+          <button id="copy">
+            Copy to clipboard
+          </button>
+
+          <div id="replay">
+            <button id="start-replay">Start</button>
+            <div id="show-replay"></div>
+          </div>
         </section>  
       </div>
     </main>

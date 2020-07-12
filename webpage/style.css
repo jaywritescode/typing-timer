@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'TypeWrong';
-  src: url('fonts/typwrng.ttf');
+  src: url('/fonts/typwrng.ttf');
 }
 
 * {
@@ -32,6 +32,7 @@ label {
   padding: 0 3.61%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 8px;
 }
 
 .text-align-left {

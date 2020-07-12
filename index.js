@@ -2,7 +2,6 @@ import { partialRight, noop } from 'lodash-es';
 
 (() => {
   const typingArea = document.getElementById('capture-area');
-  // const codeArea = document.getElementById('result').firstElementChild;
   const replayButton = document.getElementById('start-replay');
   const replayArea = document.getElementById('show-replay');
 
