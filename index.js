@@ -1,29 +1,16 @@
-import { partialRight, noop } from 'lodash-es';
-
 (() => {
   const typingArea = document.getElementById('capture-area');
   const replayButton = document.getElementById('start-replay');
   const replayArea = document.getElementById('show-replay');
 
   window.addEventListener('DOMContentLoaded', () => {
+    console.log('./index.js DOMContentLoaded');
+
     const history = new EventHistory();
 
     typingArea.addEventListener('input', (evt) => {
       const events = history.recordEvent(evt);
       updateResult(JSON.stringify(events));
-    });
-
-    replayButton.addEventListener('click', () => {
-      fetch('_test2.json')
-      .then(res => res.json())
-      .then(partialRight(doReplay, replayArea))
-      .catch(function (err) {
-        var p = document.createElement('p');
-        p.appendChild(
-          document.createTextNode('Error: ' + error.message)
-        );
-        document.body.insertBefore(p, replayArea);
-      });
     });
   });
 })();
@@ -47,7 +34,7 @@ function doReplay(events, el) {
   };
 
   function applyKeyboardEvent({ data, inputType }) {
-    const fn = actions[inputType] || noop;
+    const fn = actions[inputType] || function() {};
     fn(data);
   }
 
@@ -82,3 +69,7 @@ class EventHistory {
     return this.events;
   }
 }
+
+export default doReplay;
+
+console.log('./index.js is loaded');
